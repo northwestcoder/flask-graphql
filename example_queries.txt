@@ -1,0 +1,53 @@
+{
+  allPeople (first: 25) {
+    edges {
+      node {
+        customerId
+        gender
+        namePrefix
+        nameFirst
+        nameLast
+        email
+        employment
+        address
+        city
+        county
+        state
+        postalCode
+        birthDt
+        isDeleted
+        jobType
+        accountType
+        phoneNumber
+        ssn
+        allergies
+        bloodType
+        lastIpaddress
+      }
+    }
+  }
+} 
+
+
+{
+allTransactions (first: 5) {
+  edges {
+    node {
+      orderid
+      transCustomerId
+      people {
+        id
+        email
+        ssn
+        phoneNumber
+      }
+      purchasedatetime
+      transactiontotal
+      numberofitems
+      productcode
+      productcategory
+      ccNumber
+    }
+  }
+}
+}
