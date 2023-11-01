@@ -13,7 +13,8 @@ PASS = "PASS"
 HOST = "HOST_OR_IP"
 DBNAME = "DBNAME"
 
-#######################################################
+
+###################################################################
     
 #this engine points at a demo db which is exposed, and only contains fake data
 connection_string = 'postgresql+psycopg2://' + USERNAME + ':' + PASS + '@' + HOST + '/' + DBNAME
