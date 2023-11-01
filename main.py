@@ -7,12 +7,14 @@ import users
 from functools import wraps
 
 
-FLASK_SECRET = "asdjkl34389asjksjdsLLKS"
+FLASK_SECRET = '123abc456def^$!asdjklSKJD'
 
 
 
 app = Flask(__name__)
 app.debug = True
+app.config['SECRET_KEY'] = FLASK_SECRET
+
 
 # Basic Authentication decorator
 def check_auth(username, password):
@@ -79,5 +81,4 @@ def shutdown_session(exception=None):
     db_session.remove()
 
 if __name__ == '__main__':
-    app.secret_key = FLASK_SECRET  # Change this to a strong secret key in a production environment
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
