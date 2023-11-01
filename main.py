@@ -9,12 +9,9 @@ from functools import wraps
 
 FLASK_SECRET = '123abc456def^$!asdjklSKJD'
 
-
-
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = FLASK_SECRET
-
 
 # Basic Authentication decorator
 def check_auth(username, password):
@@ -35,14 +32,9 @@ def requires_auth(f):
         session['username'] = returned_user['username']
         session['first_name'] = returned_user['first_name']
         session['last_name'] = returned_user['last_name']
+        print(session)
         return f(*args, **kwargs)
     return decorated
-
-# Route to render the login form
-@app.route('/login', methods=['GET'])
-def login():
-    return render_template('login.html')
-
 
 class CustomGraphQLView(GraphQLView):
     @requires_auth
@@ -67,8 +59,8 @@ def getuser():
    "firstName": first_name,
    "lastName": last_name
     }
-
     return user,  {'Content-Type': 'application/json; charset=utf-8'}
+
 
 @app.route('/', methods=(['GET']))
 @requires_auth
